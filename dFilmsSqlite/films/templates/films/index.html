@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template App</title>
+</head>
+<body>
+    <h1>Template App</h1>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <p>Om een acteur toe te voegen <a href="{% url 'films:acteurcreate' %}">Klik hier</a></p>
+    <p>Om een film toe te voegen <a href="{% url 'films:filmcreate' %}">Klik hier</a></p>
+
+    <h3>films</h3>
+    {% if film_list %}
+        <ul>
+        {% for film in film_list %}
+            <li><a href="{% url 'films:filmdetail' film.id%}">{{ film.film_title }}</a>&emsp;<a href="{% url 'films:filmupdate' film.id%}">Edit</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No films are available</p>
+    {% endif %}
+</body>
+</html>

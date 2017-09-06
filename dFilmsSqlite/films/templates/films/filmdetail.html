@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Film Detail</title>
+</head>
+<body>
+    <p><a href="{% url 'films:index' %}">Home</a></p>
+    <p>Om een film toe te voegen <a href="{% url 'films:filmcreate' %}">Klik hier</a></p>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if film %}
+        <h3>{{ film.film_title }}</h3>
+        <p><a href="{% url 'films:filmupdate' film.id%}">Edit</a></p>
+        <p><a href="{% url 'films:filmdelete' film.id%}">Delete</a></p>
+    {% else %}
+        <p>No films found!!!</p>
+    {% endif %}
+</body>
+</html>

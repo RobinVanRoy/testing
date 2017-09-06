@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acteur Detail</title>
+</head>
+<body>
+    <p><a href="{% url 'films:index' %}">Home</a></p>
+    <p>Om een acteur toe te voegen <a href="{% url 'films:acteurcreate' %}">Klik hier</a></p>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if acteur %}
+        <h1>{{ acteur.acteur_name }}</h1>
+        <h3>Films</h3>
+        <ul>
+        {% for film in acteur.film_set.all %}
+            <li>{{ film.film_title }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No acteur found!!!</p>
+    {% endif %}
+</body>
+</html>
